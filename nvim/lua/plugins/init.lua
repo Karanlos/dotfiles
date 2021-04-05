@@ -9,8 +9,10 @@ paq {'shougo/deoplete-lsp'}
 paq {'shougo/deoplete.nvim', hook = fn['remote#host#UpdateRemotePlugins']}
 paq {'nvim-treesitter/nvim-treesitter'}
 paq {'neovim/nvim-lspconfig'}
-paq {'junegunn/fzf', hook = fn['fzf#install']}
-paq {'junegunn/fzf.vim'}
 paq {'ojroques/nvim-lspfuzzy'}
 paq {'gruvbox-community/gruvbox'}
-g['deoplete#enable_at_startup'] = 1  -- enable deoplete at startup
+paq {'rust-lang/rust.vim'}
+paq {'nvim-lua/popup.nvim'}
+paq {'nvim-lua/plenary.nvim'}
+paq {'nvim-telescope/telescope.nvim'}
+paq {'tpope/vim-fugitive'}

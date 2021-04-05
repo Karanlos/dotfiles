@@ -1,6 +1,9 @@
 local utils = require('utils')
 
 local cmd = vim.cmd
+local g = vim.g
+
+g.mapleader = ' '
 
 local indent = 2
 cmd 'colorscheme gruvbox'                              -- Put your favorite colorscheme here
@@ -24,3 +27,7 @@ utils.opt('w', 'list', true)                                -- Show some invisib
 utils.opt('w', 'number', true)                              -- Print line number
 utils.opt('w', 'relativenumber', true)                      -- Relative line numbers
 utils.opt('w', 'wrap', false)                               -- Disable line wrap
+
+g['deoplete#enable_at_startup'] = 1  -- enable deoplete at startup
+
+vim.api.nvim_command('autocmd FileType TelescopePrompt call deoplete#custom#buffer_option(\'auto_complete\', v:false)')
