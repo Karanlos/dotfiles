@@ -9,13 +9,19 @@ current_path = os.path.realpath('./nvim')
 
 try:
     os.makedirs(path, exist_ok=True)
+
+except OSError as error:
+    print('Creation of the directories failed. ' + str(error))
+else:
+    print('Creation of directories was successful')
+
+try:
     if os.path.islink(path + 'nvim'):
         print('Removing existing symlink')
         os.remove(path + 'nvim')
 
     os.symlink(current_path, path + 'nvim')
 except OSError as error:
-    print('Creation of the directories failed. ' + str(error))
+    print('Symlink failed: %s' % str(error))
 else:
-    print('Creation of directories was successful')
-
+    print('Symlink created successfully.')

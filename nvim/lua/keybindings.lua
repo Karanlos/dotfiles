@@ -6,3 +6,4 @@ utils.map('n', '<leader>fb', '<cmd>lua require(\'telescope.builtin\').buffers()<
 utils.map('n', '<leader>fh', '<cmd>lua require(\'telescope.builtin\').help_tags()<cr>')
 utils.map('n', '<leader>gg', '<cmd>Git<cr>')
 utils.map('n', '<leader>gd', '<cmd>Gdiff<cr>')
+utils.map('n', '<leader>gc', '<cmd>Git commit<cr>')
