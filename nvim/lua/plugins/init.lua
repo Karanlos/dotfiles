@@ -16,3 +16,4 @@ paq {'nvim-lua/popup.nvim'}
 paq {'nvim-lua/plenary.nvim'}
 paq {'nvim-telescope/telescope.nvim'}
 paq {'tpope/vim-fugitive'}
+paq {'nvim-lua/completion-nvim'}

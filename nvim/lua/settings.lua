@@ -2,6 +2,7 @@ local utils = require('utils')
 
 local cmd = vim.cmd
 local g = vim.g
+local nvim_command = vim.api.nvim_command
 
 g.mapleader = ' '
 
@@ -29,5 +30,5 @@ utils.opt('w', 'relativenumber', true)                      -- Relative line num
 utils.opt('w', 'wrap', false)                               -- Disable line wrap
 
 g['deoplete#enable_at_startup'] = 1  -- enable deoplete at startup
-
-vim.api.nvim_command('autocmd FileType TelescopePrompt call deoplete#custom#buffer_option(\'auto_complete\', v:false)')
+g['python3_host_prog'] = 'python'--'C:/Users/ehsej/AppData/Local/Programs/Python/Python39/python.exe'
+nvim_command('autocmd FileType TelescopePrompt call deoplete#custom#buffer_option(\'auto_complete\', v:false)')
