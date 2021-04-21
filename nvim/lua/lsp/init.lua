@@ -49,7 +49,7 @@ end
 
 -- Use a loop to conveniently both setup defined servers 
 -- and map buffer local keybindings when the language server attaches
-local servers = { }
+local servers = { 'pyright' }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup { on_attach = on_attach }
 end
@@ -57,7 +57,7 @@ end
 local pid = vim.fn.getpid()
 local omnisharp_bin = ""
 
-nvim_lsp["omnisharp"].setup {
-  on_attach = on_attach;
-  cmd = { omnisharp_bin, "--languageserver", "--hostPID", tostring(pid) };
-}
+--nvim_lsp["omnisharp"].setup {
+--  on_attach = on_attach;
+--  cmd = { omnisharp_bin, "--languageserver", "--hostPID", tostring(pid) };
+--}

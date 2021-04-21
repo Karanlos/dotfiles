@@ -32,3 +32,4 @@ utils.opt('w', 'wrap', false)                               -- Disable line wrap
 g['deoplete#enable_at_startup'] = 1  -- enable deoplete at startup
 g['python3_host_prog'] = 'python'--'C:/Users/ehsej/AppData/Local/Programs/Python/Python39/python.exe'
 nvim_command('autocmd FileType TelescopePrompt call deoplete#custom#buffer_option(\'auto_complete\', v:false)')
+nvim_command('set shm+=c')
