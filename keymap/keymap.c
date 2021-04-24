@@ -40,7 +40,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //------------------------------------------------------------//-----------------------------------------------------------//
     _______, KC_HOME, KC_PGUP, KC_PGDN, KC_END,  DK_LPRN,           DK_RPRN, KC_P4,   KC_P5,   KC_P6,   DK_PLUS,  DK_ASTR,
 //------------------------------------------------------------//-----------------------------------------------------------//
-    _______, _______, _______, _______, _______, DK_LBRC,           DK_RBRC, KC_P1,   KC_P2,   KC_P3,   KC_P0,    DK_LABK,
+    _______, _______, _______, _______, _______, DK_LCBR,           DK_RCBR, KC_P1,   KC_P2,   KC_P3,   KC_P0,    DK_LABK,
 //------------------------------------------------------------//-----------------------------------------------------------//
                                KC_LCTL, KC_HOME, KC_TRNS,		        KC_TRNS, KC_RALT, KC_RGUI,
                                         KC_SPC,  KC_BSPC,           KC_RCTL, KC_ENT
@@ -68,3 +68,43 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                             _______, _______,      _______, _______
       ),
 };
+
+const rgblight_segment_t PROGMEM my_capslock_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+    {6, 4, HSV_RED},
+    {12, 4, HSV_RED}
+    );
+
+const rgblight_segment_t PROGMEM my_layer1_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+    {20, 1, HSV_RED}
+    );
+
+const rgblight_segment_t PROGMEM my_layer2_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+    {16, 1, HSV_RED}
+    );
+
+const rgblight_segment_t PROGMEM my_layer3_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+    {15, 1, HSV_RED}
+    );
+//
+const rgblight_segment_t* const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
+    my_capslock_layer,
+    my_layer1_layer,
+    my_layer2_layer,
+    my_layer3_layer
+    );
+
+void keyboard_post_init_user(void) {
+    rgblight_layers = my_rgb_layers;
+    rgblight_set_layer_state(1, true);
+}
+
+layer_state_t default_layer_state_set_user(layer_state_t state) {
+    return state;
+}
+
+layer_state_t layer_state_set_user(layer_state_t state) {
+  rgblight_set_layer_state(1, layer_state_cmp(state, 0));
+  rgblight_set_layer_state(2, layer_state_cmp(state, 1));
+  rgblight_set_layer_state(3, layer_state_cmp(state, 2));
+  return state;
+}
