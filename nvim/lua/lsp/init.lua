@@ -1,12 +1,14 @@
-local nvim_lsp = require('lspconfig')
+--[=[local nvim_lsp = require('lspconfig')
+local clangd_nvim = require('clangd_nvim')
+
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-  require'completion'.on_attach(client, bufnr)
+  --require'completion'.on_attach(client)
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   -- Mappings.
-  local opts = { noremap=true, silent=true }
+ local opts = { noremap=true, silent=true }
   buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
   buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
@@ -46,22 +48,25 @@ local on_attach = function(client, bufnr)
   end
 end
 
+--[[
 -- Use a loop to conveniently both setup defined servers
 -- and map buffer local keybindings when the language server attaches
-local servers = { 'pyright'}
-for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup { on_attach = on_attach }
+local servers = { 'pyright' }
+
+for _, server in ipairs(servers) do
+  nvim_lsp[server].setup{ on_attach = on_attach }
 end
 
 local pid = vim.fn.getpid()
 local omnisharp_bin = ""
---[[
-nvim_lsp["omnisharp"].setup {
-  on_attach = on_attach;
-  cmd = { omnisharp_bin, "--languageserver", "--hostPID", tostring(pid) };
-}
-]]--
---[[
+
+if omnisharp_bin ~= "" then
+  nvim_lsp["omnisharp"].setup {
+    on_attach = on_attach;
+    cmd = { omnisharp_bin, "--languageserver", "--hostPID", tostring(pid) };
+  }
+end
+
 nvim_lsp.rust_analyzer.setup{
   on_attach = on_attach,
   settings = {
@@ -79,12 +84,12 @@ nvim_lsp.rust_analyzer.setup{
     }
   }
 }
-]]--
+]=]--
 local sumneko_root_path = '/home/ehs/.local/share/nvim/lspinstall/lua/sumneko-lua/extension/server'
 local sumneko_binary = sumneko_root_path .. '/bin/Linux/lua-language-server'
 
 require'lspconfig'.sumneko_lua.setup {
-  on_attach = on_attach,
+    --on_attach = on_attach,
     cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
     settings = {
         Lua = {
@@ -109,8 +114,15 @@ require'lspconfig'.sumneko_lua.setup {
     },
 }
 
-RResources = {k = 3}
-function RResources:test()
-
-end
+require'lspconfig'.clangd.setup{
+  capabilities = {
+    textDocument = {
+      semanticHighlightingCapabilities = {
+        semanticHighlighting = true
+      }
+    }
+  },
+--  on_init = clangd_nvim.on_init,
+ -- on_attach = on_attach
+}
 

@@ -1,7 +1,5 @@
-require('utils')
-require('plugins')
-require('settings')
-require('keybindings')
+--require('utils')
 require('lsp')
-
-RResources:test()
+--require('plugins')
+--require('settings')
+--require('keybindings')
