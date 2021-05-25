@@ -15,4 +15,4 @@ paq {'nvim-lua/plenary.nvim'}
 paq {'nvim-telescope/telescope.nvim'}
 paq {'tpope/vim-fugitive'}
 paq {'nvim-lua/completion-nvim'}
-paq {'kabouzeid/nvim-lspinstall'}
+paq {'robert-oleynik/clangd-nvim'}
