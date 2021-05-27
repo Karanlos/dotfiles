@@ -16,3 +16,4 @@ paq {'nvim-telescope/telescope.nvim'}
 paq {'tpope/vim-fugitive'}
 paq {'nvim-lua/completion-nvim'}
 paq {'robert-oleynik/clangd-nvim'}
+paq {'ziglang/zig.vim'}

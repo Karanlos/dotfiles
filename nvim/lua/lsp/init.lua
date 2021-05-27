@@ -51,7 +51,7 @@ end
 
 -- Use a loop to conveniently both setup defined servers
 -- and map buffer local keybindings when the language server attaches
-local servers = { 'pyright' }
+local servers = { 'pyright', 'zls' }
 
 for _, server in ipairs(servers) do
   nvim_lsp[server].setup{ on_attach = on_attach }
@@ -84,8 +84,7 @@ nvim_lsp.rust_analyzer.setup{
     }
   }
 }
-
-local sumneko_root_path = 'C:/zip/sumneko/extension/server'
+--[=[local sumneko_root_path = 'C:/zip/sumneko/extension/server'
 local sumneko_binary = sumneko_root_path .. '/bin/Windows/lua-language-server.exe'
 
 require'lspconfig'.sumneko_lua.setup {
@@ -113,7 +112,7 @@ Lua = {
         },
     },
 }
-
+]=]--
 --[[
 require'lspconfig'.clangd.setup{
   capabilities = {
