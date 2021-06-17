@@ -1,10 +1,9 @@
---[=[local nvim_lsp = require('lspconfig')
-local clangd_nvim = require('clangd_nvim')
+local nvim_lsp = require('lspconfig')
 
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-  --require'completion'.on_attach(client)
+  require'completion'.on_attach(client)
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   -- Mappings.
@@ -56,9 +55,9 @@ local servers = { 'pyright' }
 for _, server in ipairs(servers) do
   nvim_lsp[server].setup{ on_attach = on_attach }
 end
-
+]]--
 local pid = vim.fn.getpid()
-local omnisharp_bin = ""
+local omnisharp_bin = "C:\\Users\\dkerhose\\dev\\programs\\omni\\OmniSharp.exe"
 
 if omnisharp_bin ~= "" then
   nvim_lsp["omnisharp"].setup {
@@ -66,7 +65,7 @@ if omnisharp_bin ~= "" then
     cmd = { omnisharp_bin, "--languageserver", "--hostPID", tostring(pid) };
   }
 end
-
+--[[
 nvim_lsp.rust_analyzer.setup{
   on_attach = on_attach,
   settings = {
@@ -84,7 +83,7 @@ nvim_lsp.rust_analyzer.setup{
     }
   }
 }
-]=]--
+
 local sumneko_root_path = '/home/ehs/.local/share/nvim/lspinstall/lua/sumneko-lua/extension/server'
 local sumneko_binary = sumneko_root_path .. '/bin/Linux/lua-language-server'
 
@@ -125,4 +124,5 @@ require'lspconfig'.clangd.setup{
 --  on_init = clangd_nvim.on_init,
  -- on_attach = on_attach
 }
+]]--
 
