@@ -1,0 +1,30 @@
+snippet legoapires "legoapires" b
+public static ApiResource Create$1() => new ApiResource
+{
+${2:${VISUAL}}
+};
+endsnippet
+
+snippet legoapireshost "legoapireshost" b
+public static ApiResource Create$1(IHostEnvironment hostingEnvironment) => new ApiResource
+{
+${2:${VISUAL}}
+};
+
+endsnippet
+
+snippet legoapiresm "legoapiresm" b
+public static ApiResource Create$1() {
+    $2
+    return new ApiResource {
+        ${3:${VISUAL}}
+    };
+}
+endsnippet
+
+snippet legoidres "legoidres" b
+public static IdentityResource Create$1() => new IdentityResource
+{
+    ${2:${VISUAL}}
+};
+endsnippet

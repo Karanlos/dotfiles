@@ -16,3 +16,4 @@ paq {'nvim-telescope/telescope.nvim'}
 paq {'tpope/vim-fugitive'}
 paq {'nvim-lua/completion-nvim'}
 paq {'SirVer/ultisnips'}
+paq {'theprimeagen/harpoon'}

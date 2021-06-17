@@ -16,3 +16,4 @@ utils.map('i', '<Tab>', 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', {noremap=true, e
 utils.map('i', '<c-p>', '<cmd>lua require\'completion\'.triggerCompletion()<cr>')
 
 cmd 'autocmd FileType rs nmap <leader>b :!cargo build<CR>'
+cmd 'autocmd FileType rs nmap <leader>r :!cargo run<CR>'
