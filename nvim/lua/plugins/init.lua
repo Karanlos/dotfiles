@@ -17,3 +17,7 @@ paq {'tpope/vim-fugitive'}
 paq {'nvim-lua/completion-nvim'}
 paq {'robert-oleynik/clangd-nvim'}
 paq {'ziglang/zig.vim'}
+paq {'theprimeagen/harpoon'}
+
+
+require 'plugins.harpoon'
