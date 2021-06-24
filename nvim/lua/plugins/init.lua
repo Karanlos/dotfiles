@@ -15,5 +15,9 @@ paq {'nvim-lua/plenary.nvim'}
 paq {'nvim-telescope/telescope.nvim'}
 paq {'tpope/vim-fugitive'}
 paq {'nvim-lua/completion-nvim'}
-paq {'SirVer/ultisnips'}
+paq {'robert-oleynik/clangd-nvim'}
+paq {'ziglang/zig.vim'}
 paq {'theprimeagen/harpoon'}
+paq {'SirVer/ultisnips'}
+
+require 'plugins.harpoon'
