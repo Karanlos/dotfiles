@@ -6,7 +6,7 @@ local nvim_command = vim.api.nvim_command
 
 g.mapleader = ' '
 
-local indent = 2
+local indent = 4
 cmd 'colorscheme gruvbox'                              -- Put your favorite colorscheme here
 utils.opt('b', 'expandtab', true)                           -- Use spaces instead of tabs
 utils.opt('b', 'shiftwidth', indent)                        -- Size of an indent
