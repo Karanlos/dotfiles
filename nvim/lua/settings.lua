@@ -37,9 +37,13 @@ require 'telescope'.setup {
       "zig%-out/.*",
       "zig%-out\\.*",
       "zig%-cache/.*",
-      "zig%-cache\\.*"
+      "zig%-cache\\.*",
+      ".git\\.*",
+      ".git/.*"
     }
   }
 }
 
-g['UltiSnipsExpandTrigger'] = "<Tab>"
+g['UltiSnipsExpandTrigger'] = "<leader>n"
+g['UltiSnipsEditSplit'] = "vertical"
+g['UltiSnipsListSnippets'] = "<leader>v"
