@@ -19,5 +19,6 @@ paq {'robert-oleynik/clangd-nvim'}
 paq {'ziglang/zig.vim'}
 paq {'theprimeagen/harpoon'}
 paq {'SirVer/ultisnips'}
+paq {'vimwiki/vimwiki'}
 
 require 'plugins.harpoon'

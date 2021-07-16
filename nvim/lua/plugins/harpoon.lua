@@ -11,4 +11,3 @@ require 'harpoon'.setup({
   },
 })
 
-print("Hello From Harpoon.lua")

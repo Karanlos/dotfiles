@@ -56,6 +56,9 @@ for _, server in ipairs(servers) do
   nvim_lsp[server].setup{ on_attach = on_attach }
 end
 ]]--
+
+nvim_lsp["zls"].setup{ on_attach = on_attach }
+
 local pid = vim.fn.getpid()
 local omnisharp_bin = "C:\\Users\\dkerhose\\dev\\programs\\omni\\OmniSharp.exe"
 
@@ -65,7 +68,6 @@ if omnisharp_bin ~= "" then
     cmd = { omnisharp_bin, "--languageserver", "--hostPID", tostring(pid) };
   }
 end
---[[
 nvim_lsp.rust_analyzer.setup{
   on_attach = on_attach,
   settings = {
@@ -83,7 +85,7 @@ nvim_lsp.rust_analyzer.setup{
     }
   }
 }
-
+--[[
 local sumneko_root_path = '/home/ehs/.local/share/nvim/lspinstall/lua/sumneko-lua/extension/server'
 local sumneko_binary = sumneko_root_path .. '/bin/Linux/lua-language-server'
 
