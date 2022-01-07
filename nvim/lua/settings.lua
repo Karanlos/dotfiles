@@ -44,6 +44,6 @@ require 'telescope'.setup {
   }
 }
 
-g['UltiSnipsExpandTrigger'] = "<leader>n"
+g['UltiSnipsExpandTrigger'] = "<c-n>"
 g['UltiSnipsEditSplit'] = "vertical"
-g['UltiSnipsListSnippets'] = "<leader>v"
+g['UltiSnipsListSnippets'] = "<C-v>"

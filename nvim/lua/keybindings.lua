@@ -1,6 +1,8 @@
 local utils = require('utils')
 local opts = {noremap=true, silent=true}
 local nvim_cmd = vim.api.nvim_command
+local ctrl = 'C'
+
 utils.map('n', '<leader>ff', '<cmd>lua require(\'telescope.builtin\').find_files({hidden=true})<cr>')
 utils.map('n', '<leader>fg', '<cmd>lua require(\'telescope.builtin\').live_grep()<cr>')
 utils.map('n', '<leader>fb', '<cmd>lua require(\'telescope.builtin\').buffers()<cr>')
@@ -20,8 +22,8 @@ utils.map('n', '<leader>h4', '<cmd>lua require \'harpoon.ui\'.nav_file(4)<cr>')
 utils.map('n', '<leader>h5', '<cmd>lua require \'harpoon.ui\'.nav_file(5)<cr>')
 utils.map('n', '<leader>hb', '<cmd>lua require \'harpoon.term\'.sendCommand(1,1); require \'harpoon.term\'.gotoTerminal(1)<cr>')
 
-utils.map('i', '<C-y>', '<Esc>')
-utils.map('i', '<c-p>', '<cmd>lua require\'completion\'.triggerCompletion()<cr>')
+utils.map('i', '<' .. ctrl .. '-y>', '<Esc>')
+utils.map('i', '<' .. ctrl .. '-p>', '<cmd>lua require\'completion\'.triggerCompletion()<cr>')
 
 utils.map('x', '<leader>P', '"_dP')
 utils.map('x', '<leader>p', '"_dp')
