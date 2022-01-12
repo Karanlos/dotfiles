@@ -33,6 +33,14 @@ utils.opt('w', 'linebreak', true)
 
 require 'telescope'.setup {
   defaults = {
+    pickers = {
+      find_files = {
+        find_command = { "rg", "--ignore", "-L", "--hidding", "--files" },
+      },
+      live_grep = {
+        find_command = { "rg", "--ignore", "--files", "-L", "--hidding" },
+      }
+    },
     file_ignore_patterns = {
       "zig%-out/.*",
       "zig%-out\\.*",
