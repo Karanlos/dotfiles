@@ -52,6 +52,8 @@ require 'telescope'.setup {
   }
 }
 
+--g['mkdp_browser'] = '/Application/Google Chrome.app/Contents/MacOS/Google Chrome'
+--g['mkdp_echo_preview_url'] = 1
 g['UltiSnipsExpandTrigger'] = "<c-n>"
 g['UltiSnipsEditSplit'] = "vertical"
 g['UltiSnipsListSnippets'] = "<C-v>"

@@ -79,7 +79,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //------------------------------------------------------------//-----------------------------------------------------------//
     _______, KC_HOME, KC_PGUP, KC_PGDN, KC_END,  DK_LPRN,           DK_RPRN, KC_P4,   KC_P5,   KC_P6,   DK_PLUS,  DK_ASTR,
 //------------------------------------------------------------//-----------------------------------------------------------//
-    TO(0), TO(6), _______, _______, _______, RSA(DK_8),           RSA(DK_9), KC_P1,   KC_P2,   KC_P3,   KC_P0,    DK_LABK,
+    TO(0), TO(6), LCA(KC_LEFT), LCA(KC_UP), LCA(KC_RIGHT), RSA(DK_8),           RSA(DK_9), KC_P1,   KC_P2,   KC_P3,   KC_P0,    DK_LABK,
 //------------------------------------------------------------//-----------------------------------------------------------//
                                KC_LCTL, KC_HOME, KC_TRNS,		        KC_TRNS, KC_RALT, KC_RGUI,
                                         KC_SPC,  KC_BSPC,           KC_RCTL, KC_ENT

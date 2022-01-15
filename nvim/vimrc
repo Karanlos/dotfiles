@@ -1,2 +1,13 @@
 let g:vimwiki_list = [{'path': '~/vimwiki/',
                       \ 'syntax': 'markdown', 'ext': '.md'}]
+function! g:Open_browser(url)
+    if has('win32')
+        silent exec 'cmd /c start 'a:url
+    elseif has('unix')
+
+    elseif has('mac') || has('macunix')
+        silent exec 'open 'a:url
+    endif
+endfunction
+
+let g:mkdp_browserfunc = 'g:Open_browser'
