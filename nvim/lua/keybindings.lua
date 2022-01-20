@@ -23,7 +23,6 @@ utils.map('n', '<leader>h5', '<cmd>lua require \'harpoon.ui\'.nav_file(5)<cr>')
 utils.map('n', '<leader>hb', '<cmd>lua require \'harpoon.term\'.sendCommand(1,1); require \'harpoon.term\'.gotoTerminal(1)<cr>')
 
 utils.map('i', '<' .. ctrl .. '-y>', '<Esc>')
-utils.map('i', '<' .. ctrl .. '-p>', '<cmd>lua require\'completion\'.triggerCompletion()<cr>')
 
 utils.map('x', '<leader>P', '"_dP')
 utils.map('x', '<leader>p', '"_dp')

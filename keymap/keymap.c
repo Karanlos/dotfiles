@@ -136,6 +136,7 @@ const rgblight_segment_t* const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
     my_layer3_layer
     );
 
+/*
 void keyboard_post_init_user(void) {
     rgblight_layers = my_rgb_layers;
     rgblight_set_layer_state(1, true);
@@ -144,10 +145,10 @@ void keyboard_post_init_user(void) {
 layer_state_t default_layer_state_set_user(layer_state_t state) {
     return state;
 }
-
 layer_state_t layer_state_set_user(layer_state_t state) {
   rgblight_set_layer_state(1, layer_state_cmp(state, 0));
   rgblight_set_layer_state(2, layer_state_cmp(state, 1));
   rgblight_set_layer_state(3, layer_state_cmp(state, 2));
   return state;
 }
+*/

@@ -3,8 +3,8 @@ local nvim_lsp = require('lspconfig')
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-  require'completion'.on_attach(client)
-  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+--  require'completion'.on_attach(client)
+--  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   -- Mappings.
  local opts = { noremap=true, silent=true }
@@ -47,6 +47,49 @@ local on_attach = function(client, bufnr)
   end
 end
 
+local cmp = require'cmp'
+
+cmp.setup({
+    snippet = {
+        expand = function(args)
+            vim.fn["UltiSnips#Anon"](args.body) -- For 'ultisnips' users.
+        end,
+    },
+    mapping = {
+        ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+        ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+        ['<C-m>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+        ['<C-y>'] = cmp.config.disable, --Specify 'cmp.config.disable' if you want to remove the default '<C-y>' mapping
+        ['<C-e>'] = cmp.mapping({
+            i = cmp.mapping.abort(),
+            c = cmp.mapping.close(),
+        }),
+        ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    },
+    sources = cmp.config.sources({
+        { name = 'nvim_lsp' },
+        { name = 'ultisnips' }, -- For ultisnips users.
+        { name = 'buffer' },
+    })
+})
+
+-- Use buffer source for '/' (if you enabled 'native_menu', this won't work anymore).
+cmp.setup.cmdline('/', {
+    sources = {
+        { name = 'buffer' }
+    }
+})
+
+-- Use cmdline & path source for ':' (if you enabled 'native_menu', this won't work anymore).
+cmp.setup.cmdline(':', {
+    sources = cmp.config.sources({
+        { name = 'path' },
+    },
+    {
+        { name = 'cmdline' }
+    })
+})
+
 --[[
 -- Use a loop to conveniently both setup defined servers
 -- and map buffer local keybindings when the language server attaches
@@ -57,14 +100,17 @@ for _, server in ipairs(servers) do
 end
 ]]--
 
+local capabilities = require'cmp_nvim_lsp'.update_capabilities(vim.lsp.protocol.make_client_capabilities())
+
 nvim_lsp["zls"].setup{ on_attach = on_attach }
 
 local pid = vim.fn.getpid()
-local omnisharp_bin = "C:\\Users\\dkerhose\\dev\\programs\\omni\\OmniSharp.exe"
+local omnisharp_bin = "/Users/dkErHoSe/Documents/Source/OmniSharp/OmniSharp"
 
 if omnisharp_bin ~= "" then
   nvim_lsp["omnisharp"].setup {
     on_attach = on_attach;
+    capabilities = capabilities,
     cmd = { omnisharp_bin, "--languageserver", "--hostPID", tostring(pid) };
   }
 end

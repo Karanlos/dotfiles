@@ -9,7 +9,9 @@ local packages = {
     'nvim-lua/plenary.nvim';
     'nvim-telescope/telescope.nvim';
     'tpope/vim-fugitive';
-    'nvim-lua/completion-nvim';
+    'hrsh7th/nvim-cmp';
+    'hrsh7th/cmp-nvim-lsp';
+--    'nvim-lua/completion-nvim';
     'robert-oleynik/clangd-nvim';
     'ziglang/zig.vim';
     'theprimeagen/harpoon';
