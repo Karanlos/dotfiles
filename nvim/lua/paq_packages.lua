@@ -17,6 +17,7 @@ local packages = {
     'theprimeagen/harpoon';
     'sirver/ultisnips';
     'vimwiki/vimwiki';
+    'psliwka/vim-smoothie';
     {'iamcco/markdown-preview.nvim', run ='cd app && yarn install'}
 }
 

@@ -47,7 +47,6 @@ require 'telescope'.setup {
       "zig%-cache/.*",
       "zig%-cache\\.*",
       ".git/.*",
-      ".git\\.*"
     }
   }
 }
