@@ -8,7 +8,6 @@ autocmd("BufWinEnter", {
     pattern = "*",
     callback = function()
         if vim.bo.ft ~= "fugitive" then
-            print("what")
             return
         end
 
