@@ -174,6 +174,16 @@ _G.packer_plugins = {
     path = "C:\\Users\\ehsej\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
   },
+  ["odin.vim"] = {
+    loaded = true,
+    path = "C:\\Users\\ehsej\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\odin.vim",
+    url = "https://github.com/Tetralux/odin.vim"
+  },
+  ["onedark.nvim"] = {
+    loaded = true,
+    path = "C:\\Users\\ehsej\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\onedark.nvim",
+    url = "https://github.com/ful1e5/onedark.nvim"
+  },
   ["packer.nvim"] = {
     loaded = true,
     path = "C:\\Users\\ehsej\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\packer.nvim",
@@ -218,11 +228,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "C:\\Users\\ehsej\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\zen-mode.nvim",
     url = "https://github.com/folke/zen-mode.nvim"
-  },
-  ["zig.vim"] = {
-    loaded = true,
-    path = "C:\\Users\\ehsej\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\zig.vim",
-    url = "https://github.com/ziglang/zig.vim"
   }
 }
 
