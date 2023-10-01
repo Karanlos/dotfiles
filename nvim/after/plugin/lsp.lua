@@ -2,6 +2,7 @@ local lsp = require('lsp-zero')
 local lsp_config = require('lspconfig')
 local autocmd = vim.api.nvim_create_autocmd
 local Karanlos_Lsp = vim.api.nvim_create_augroup("Karanlos_Lsp", {})
+local luasnip = require('luasnip')
 
 lsp.preset('recommended')
 
@@ -60,6 +61,9 @@ on_attach = function(client, bufnr)
     vim.keymap.set("n", "<leader>gn", vim.lsp.buf.rename, opts)
     vim.keymap.set('n', '<leader>c', vim.lsp.buf.code_action, opts)
     vim.keymap.set('i', '<C-h>', vim.lsp.buf.signature_help, opts)
+
+    vim.keymap.set({'i', 's'}, '<C-L>', function() luasnip.jump(1) end, {silent = true})
+    vim.keymap.set({'i', 's'}, '<C-J>', function() luasnip.jump(-1) end, {silent = true})
     if client.name == "omnisharp" then 
         client.server_capabilities.semanticTokensProvider = {
           full = vim.empty_dict(),
