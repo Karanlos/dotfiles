@@ -34,3 +34,4 @@ vim.o.relativenumber = true
 
 vim.g.mapleader = " "
 
+vim.opt.completeopt = { "menu", "menuone", "noselect" }

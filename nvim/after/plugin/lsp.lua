@@ -8,23 +8,114 @@ lsp.ensure_installed({'omnisharp'})
 
 local cmp = require('cmp')
 local cmp_select = { behavior = cmp.SelectBehavior.Select}
-local cmp_mappings = lsp.defaults.cmp_mappings({
-    ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
-    ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
-    ['<C-e>'] = cmp.mapping({
-        i = cmp.mapping.abort(),
-        c = cmp.mapping.close(),
+
+local ok, lspkind = pcall(require, 'lspkind')
+
+cmp.setup({
+    snippet = {
+        expand = function(args)
+            require('luasnip').lsp_expand(args.body)
+        end,
+    },
+    mapping = {
+        ["<C-n>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
+        ["<C-p>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
+        ["<C-d>"] = cmp.mapping.scroll_docs(-4),
+        ["<C-f>"] = cmp.mapping.scroll_docs(4),
+        ["<C-e>"] = cmp.mapping.abort(),
+        ["<c-y>"] = cmp.mapping(
+          cmp.mapping.confirm {
+            behavior = cmp.ConfirmBehavior.Insert,
+            select = true,
+          },
+          { "i", "c" }
+        ),
+        ["<M-y>"] = cmp.mapping(
+          cmp.mapping.confirm {
+            behavior = cmp.ConfirmBehavior.Replace,
+            select = false,
+          },
+          { "i", "c" }
+        ),
+
+        ["<c-space>"] = cmp.mapping {
+          i = cmp.mapping.complete(),
+          c = function(
+            _ --[[fallback]]
+          )
+            if cmp.visible() then
+              if not cmp.confirm { select = true } then
+                return
+              end
+            else
+              cmp.complete()
+            end
+          end,
+        },
+
+        -- ["<tab>"] = false,
+        ["<tab>"] = cmp.config.disable,
+
+        -- Cody completion
+        ["<c-a>"] = cmp.mapping.complete {
+          config = {
+            sources = {
+              { name = "cody" },
+            },
+          },
+        },
+
+        -- ["<tab>"] = cmp.mapping {
+        --   i = cmp.config.disable,
+        --   c = function(fallback)
+        --     fallback()
+        --   end,
+        -- },
+
+        -- Testing
+        ["<c-q>"] = cmp.mapping.confirm {
+          behavior = cmp.ConfirmBehavior.Replace,
+          select = false,
+        },
+
+        -- If you want tab completion :'(
+        --  First you have to just promise to read `:help ins-completion`.
+        --
+        -- ["<Tab>"] = function(fallback)
+        --   if cmp.visible() then
+        --     cmp.select_next_item()
+        --   else
+        --     fallback()
+        --   end
+        -- end,
+        -- ["<S-Tab>"] = function(fallback)
+        --   if cmp.visible() then
+        --     cmp.select_prev_item()
+        --   else
+        --     fallback()
+        --   end
+        -- end,
+    },
+    sources = cmp.config.sources({
+        { name = 'nvim_lsp' },
+        { name = 'luasnip' },
+        { name = 'nvim_lsp_signature_help' },
+    }, {
+        { name = 'buffer' },
     }),
-
-    ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-    ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-    ['<C-y>'] = cmp.config.disable,
-    ['<Cr>'] = cmp.mapping.confirm({ select = true }),
-    ['<C-space>'] = cmp.mapping.complete(),
-})
-
-lsp.set_preferences({
-    sign_icons = { }
+    formatting = {
+        format = lspkind.cmp_format {
+            with_text = true,
+            menu = {
+                buffer = "[buf]",
+                luasnip = "[snip]",
+                nvim_lsp = "[LSP]",
+            },
+        }
+    },
+    experimental = {
+        native_menu = false,
+    },
 })
 
 on_attach = function(client, bufnr)
@@ -133,6 +224,18 @@ lsp.configure('omnisharp', {
     organize_imports_on_format = true
 })
 
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+lsp_config.zls.setup({
+    capabilities = capabilities,
+    on_attach = on_attach,
+})
+
+lsp_config.odin.setup({
+    capabilities = capabilities,
+    on_attach = on_attach,
+})
+
 lsp_config["dartls"].setup({
 	on_attach = on_attach,
 	settings = {
@@ -148,14 +251,6 @@ lsp_config["dartls"].setup({
 			showTodos = true,
 		},
 	},
-})
-
-lsp.setup_nvim_cmp({
-    mapping = cmp_mappings,
-    sources = {
-        { name = 'nvim_lsp' },
-        { name = 'nvim_lsp_signature_help' },
-    }
 })
 
 lsp.on_attach(on_attach)

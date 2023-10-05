@@ -139,6 +139,11 @@ _G.packer_plugins = {
     path = "C:\\Users\\ehsej\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\lsp-zero.nvim",
     url = "https://github.com/VonHeikemen/lsp-zero.nvim"
   },
+  ["lspkind.nvim"] = {
+    loaded = true,
+    path = "C:\\Users\\ehsej\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\lspkind.nvim",
+    url = "https://github.com/onsails/lspkind.nvim"
+  },
   ["markdown-preview.nvim"] = {
     loaded = true,
     path = "C:\\Users\\ehsej\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\markdown-preview.nvim",
