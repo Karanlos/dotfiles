@@ -1,10 +1,22 @@
 local lsp = require('lsp-zero')
 local lsp_config = require('lspconfig')
+local autocmd = vim.api.nvim_create_autocmd
+local Karanlos_Lsp = vim.api.nvim_create_augroup("Karanlos_Lsp", {})
 local luasnip = require('luasnip')
 
 lsp.preset('recommended')
 
 lsp.ensure_installed({'omnisharp'})
+
+vim.keymap.set('n', '<leader>gg', vim.cmd.Git)
+
+autocmd("BufWinEnter", {
+    group = Karanlos_Lsp,
+    pattern = "*.template",
+    callback = function()
+        vim.api.nvim_cmd({ cmd = 'setf', args = { 'json' } }, {})
+    end,
+})
 
 local cmp = require('cmp')
 local cmp_select = { behavior = cmp.SelectBehavior.Select}
@@ -139,6 +151,7 @@ on_attach = function(client, bufnr)
     vim.keymap.set('n', '<leader>wa', function() vim.lsp.buf.format { async = true } end, opts)
     vim.keymap.set("n", "<leader>gn", vim.lsp.buf.rename, opts)
     vim.keymap.set('n', '<leader>c', vim.lsp.buf.code_action, opts)
+    vim.keymap.set('i', '<C-h>', vim.lsp.buf.signature_help, opts)
 
     vim.keymap.set({'i', 's'}, '<C-L>', function() luasnip.jump(1) end, {silent = true})
     vim.keymap.set({'i', 's'}, '<C-J>', function() luasnip.jump(-1) end, {silent = true})
@@ -256,3 +269,14 @@ lsp_config["dartls"].setup({
 lsp.on_attach(on_attach)
 
 lsp.setup()
+
+
+--local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+--parser_config.odin = {
+--    install_info = {
+--        url = "/Users/dkErHoSe/.local/share/nvim/site/pack/packer/start/tree-sitter-odin",
+--        branch = 'main',
+--        files = { 'src/parser.c' }
+--    },
+--    filetype = 'odin'
+--}
