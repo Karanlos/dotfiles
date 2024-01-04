@@ -19,7 +19,12 @@ local t = ls.text_node
 
 local c = ls.choice_node
 
+local fmt = require('luasnip.extras.fmt').fmt
+
+
 ls.add_snippets("all", {
 
     s("fmt1", t "wow, you were right!"),
+
+
 })

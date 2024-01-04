@@ -63,6 +63,7 @@ return require('packer').startup(function(use)
     use('folke/zen-mode.nvim')
     use('Tetralux/odin.vim')
     use { 'catppuccin/nvim', as = 'catppuccin' }
+    use('rluba/jai.vim')
 end)
 
 

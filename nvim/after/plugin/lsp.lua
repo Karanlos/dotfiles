@@ -35,14 +35,14 @@ cmp.setup({
         ["<C-d>"] = cmp.mapping.scroll_docs(-4),
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
         ["<C-e>"] = cmp.mapping.abort(),
-        ["<c-y>"] = cmp.mapping(
+        ["<c-b>"] = cmp.mapping(
           cmp.mapping.confirm {
             behavior = cmp.ConfirmBehavior.Insert,
             select = true,
           },
           { "i", "c" }
         ),
-        ["<M-y>"] = cmp.mapping(
+        ["<M-b>"] = cmp.mapping(
           cmp.mapping.confirm {
             behavior = cmp.ConfirmBehavior.Replace,
             select = false,
@@ -247,6 +247,16 @@ lsp_config.zls.setup({
 lsp_config.odin.setup({
     capabilities = capabilities,
     on_attach = on_attach,
+})
+
+local jai_root_files = {
+    '.git',
+    'jails.json',
+}
+
+lsp_config.jails.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
 })
 
 lsp_config["dartls"].setup({
