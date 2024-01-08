@@ -73,6 +73,7 @@ return require('packer').startup(function(use)
             require'xbase'.setup({})
         end
     }
+    use('rluba/jai.vim')
 end)
 
 
