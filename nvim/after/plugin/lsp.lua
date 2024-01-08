@@ -130,8 +130,10 @@ cmp.setup({
     },
 })
 
-on_attach = function(client, bufnr)
+local on_attach = function(client, bufnr)
     local opts = { buffer = bufnr, remap = false }
+
+    vim.bo[bufnr].omnifunc = 'v:lua.vim.lsp.omnifunc'
 
     vim.keymap.set('n', 'gd', function() vim.lsp.buf.definition() end, opts)
     vim.keymap.set('n', 'gD', function() vim.lsp.buf.declaration() end, opts)
@@ -233,10 +235,6 @@ on_attach = function(client, bufnr)
     end
 end
 
-lsp.configure('omnisharp', {
-    organize_imports_on_format = true
-})
-
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 lsp_config.zls.setup({
@@ -244,7 +242,31 @@ lsp_config.zls.setup({
     on_attach = on_attach,
 })
 
+lsp_config.omnisharp.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+    organize_imports_on_format = true,
+    settings = {
+        completions = {
+            completeFunctionCalls = true
+        }
+    }
+})
+
+capabilities.textDocument.completion.editsNearCursor = true;
+lsp_config.glslls.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+    cmd = { '/Users/dkErHoSe/Documents/Source/glsl-language-server/build/glslls', '--stdin' }
+})
+
+
 lsp_config.odin.setup({
+    capabilities = capabilities,
+    on_attach = on_attach,
+})
+
+lsp_config.sourcekit.setup({
     capabilities = capabilities,
     on_attach = on_attach,
 })
