@@ -62,6 +62,35 @@ return require('packer').startup(function(use)
     use('iamcco/markdown-preview.nvim', { run = 'cd app && npm install' })
     use('folke/zen-mode.nvim')
     use('Tetralux/odin.vim')
+    --use {
+    --    'zbirenbaum/copilot.lua',
+    --    cmd = 'Copilot',
+    --    event = 'InsertEnter',
+    --    config = function()
+    --        require("copilot").setup({
+    --            suggestion = {
+    --                auto_trigger = true,
+    --                keymap = {
+    --                    next = "<C-q>",
+    --                }
+    --            },
+    --            filetypes = {
+    --                typescript = true,
+    --                javascript = true,
+    --                csharp = true,
+    --                ["*"] = false,
+    --            }
+    --        })
+    --    end,
+    --}
+    --use {
+    --    'zbirenbaum/copilot-cmp',
+    --    after = { 'copilot.lua' },
+    --    config = function ()
+    --        require('copilot_cmp').setup()
+    --    end
+    --}
+    use('github/Copilot.vim')
     use { 'catppuccin/nvim', as = 'catppuccin' }
     use {
         'xbase-lab/xbase',
