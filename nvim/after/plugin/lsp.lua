@@ -6,7 +6,7 @@ local luasnip = require('luasnip')
 
 lsp.preset('recommended')
 
-lsp.ensure_installed({'omnisharp'})
+-- lsp.ensure_installed({'omnisharp'})
 
 vim.keymap.set('n', '<leader>gg', vim.cmd.Git)
 
@@ -23,78 +23,83 @@ local cmp_select = { behavior = cmp.SelectBehavior.Select}
 
 local ok, lspkind = pcall(require, 'lspkind')
 
--- cmp.setup({
---     snippet = {
---         expand = function(args)
---             require('luasnip').lsp_expand(args.body)
---         end,
---     },
---     mapping = {
--- 
---         -- ["<tab>"] = false,
---         ["<tab>"] = nil,
--- 
---         -- Cody completion
---         ["<c-a>"] = cmp.mapping.complete {
---           config = {
---             sources = {
---               { name = "cody" },
---             },
---           },
---         },
--- 
---         -- ["<tab>"] = cmp.mapping {
---         --   i = cmp.config.disable,
---         --   c = function(fallback)
---         --     fallback()
---         --   end,
---         -- },
--- 
---         -- Testing
---         ["<c-q>"] = cmp.mapping.confirm {
---           behavior = cmp.ConfirmBehavior.Replace,
---           select = false,
---         },
--- 
---         -- If you want tab completion :'(
---         --  First you have to just promise to read `:help ins-completion`.
---         --
---         -- ["<Tab>"] = function(fallback)
---         --   if cmp.visible() then
---         --     cmp.select_next_item()
---         --   else
---         --     fallback()
---         --   end
---         -- end,
---         -- ["<S-Tab>"] = function(fallback)
---         --   if cmp.visible() then
---         --     cmp.select_prev_item()
---         --   else
---         --     fallback()
---         --   end
---         -- end,
---     },
---     sources = cmp.config.sources({
---         { name = 'nvim_lsp' },
---         { name = 'luasnip' },
---         { name = 'nvim_lsp_signature_help' },
---     }, {
---         { name = 'buffer' },
---     }),
---     formatting = {
---         format = lspkind.cmp_format {
---             with_text = true,
---             menu = {
---                 buffer = "[buf]",
---                 luasnip = "[snip]",
---                 nvim_lsp = "[LSP]",
---             },
---         }
---     },
---     experimental = {
---         native_menu = false,
---     },
--- })
+register_cmp_source()
+
+ cmp.setup({
+     snippet = {
+         expand = function(args)
+             vim.snippet.expand(args.body)
+             -- require('luasnip').lsp_expand(args.body)
+         end,
+     },
+     mapping = {
+ 
+         -- ["<tab>"] = false,
+         -- ["<tab>"] = nil,
+ 
+         -- Cody completion
+         ["<c-a>"] = cmp.mapping.complete {
+           config = {
+             sources = {
+               { name = "cody" },
+             },
+           },
+         },
+ 
+         -- ["<tab>"] = cmp.mapping {
+         --   i = cmp.config.disable,
+         --   c = function(fallback)
+         --     fallback()
+         --   end,
+         -- },
+ 
+         -- Testing
+         ['<Tab>'] = cmp.mapping.confirm { select = true },
+         ["<c-q>"] = cmp.mapping.confirm {
+           behavior = cmp.ConfirmBehavior.Replace,
+           select = false,
+         },
+ 
+         -- If you want tab completion :'(
+         --  First you have to just promise to read `:help ins-completion`.
+         --
+         -- ["<Tab>"] = function(fallback)
+         --   if cmp.visible() then
+         --     cmp.select_next_item()
+         --   else
+         --     fallback()
+         --   end
+         -- end,
+         -- ["<S-Tab>"] = function(fallback)
+         --   if cmp.visible() then
+         --     cmp.select_prev_item()
+         --   else
+         --     fallback()
+         --   end
+         -- end,
+     },
+     sources = cmp.config.sources({
+         { name = 'snp' },
+         { name = 'nvim_lsp' },
+         { name = 'luasnip' },
+         { name = 'nvim_lsp_signature_help' },
+     }, {
+         { name = 'buffer' },
+     }),
+     formatting = {
+         format = lspkind.cmp_format {
+             with_text = true,
+             menu = {
+                 buffer = "[buf]",
+                 luasnip = "[snip]",
+                 nvim_lsp = "[LSP]",
+             },
+         }
+     },
+     experimental = {
+         native_menu = false,
+     },
+ })
 
 
 local cmp_mappings = lsp.defaults.cmp_mappings({
@@ -132,13 +137,11 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
         end
       end,
     },
-    ['<Tab>'] = nil,
+    -- ['<Tab>'] = nil,
     ['<S-Tab>'] = nil,
+    ['<CR>'] = cmp.mapping.confirm { select = true },
 })
 
-lsp.setup_nvim_cmp({
-    mappings = cmp_mappings
-})
 
 local on_attach = function(client, bufnr)
     local opts = { buffer = bufnr, remap = false }
@@ -164,8 +167,8 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', '<leader>c', vim.lsp.buf.code_action, opts)
     vim.keymap.set({'i', 'n'}, '<C-K>', vim.lsp.buf.signature_help, opts)
 
-    vim.keymap.set({'i', 's'}, '<C-L>', function() luasnip.jump(1) end, {silent = true})
-    vim.keymap.set({'i', 's'}, '<C-J>', function() luasnip.jump(-1) end, {silent = true})
+    vim.keymap.set({'i', 's'}, '<C-L>', function() vim.snippet.jump(1) end, {silent = true})
+    vim.keymap.set({'i', 's'}, '<C-J>', function() vim.snippet.jump(-1) end, {silent = true})
     if client.name == "omnisharp" then 
         client.server_capabilities.semanticTokensProvider = {
           full = vim.empty_dict(),
@@ -246,10 +249,16 @@ end
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
+local zls_place = '/Users/dkErHoSe/Documents/GitHub/zls/zig-out/bin/zls'
+
+if vim.fn.has('win32') then
+    zls_place = 'D:/dev/programs/zls.exe'
+end
+
 lsp_config.zls.setup({
     capabilities = capabilities,
     on_attach = on_attach,
-    cmd = { '/Users/dkErHoSe/Documents/GitHub/zls/zig-out/bin/zls' }
+    cmd = { zls_place }
 })
 
 lsp_config.omnisharp.setup({
@@ -276,10 +285,10 @@ lsp_config.ols.setup({
     on_attach = on_attach,
 })
 
-lsp_config.sourcekit.setup({
-    capabilities = capabilities,
-    on_attach = on_attach,
-})
+-- lsp_config.sourcekit.setup({
+--     capabilities = capabilities,
+--     on_attach = on_attach,
+-- })
 
 lsp_config.jails.setup({
     on_attach = on_attach,

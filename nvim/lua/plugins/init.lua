@@ -47,13 +47,16 @@ return require('packer').startup(function(use)
     use('nvim-treesitter/nvim-treesitter')
     use('ojroques/nvim-lspfuzzy')
     use('gruvbox-community/gruvbox')
+    use('Mofiqul/vscode.nvim')
+    use('gbprod/nord.nvim')
+    use('neanias/everforest-nvim')
     use('rust-lang/rust.vim')
     use('onsails/lspkind.nvim')
     use('nvim-lua/popup.nvim')
     use('nvim-lua/plenary.nvim')
     use('nvim-telescope/telescope.nvim')
     use('tpope/vim-fugitive')
-    use('ful1e5/onedark.nvim')
+    use('navarasu/onedark.nvim')
 --    use('nvim-lua/completion-nvim')
     use('robert-oleynik/clangd-nvim')
     use('theprimeagen/harpoon')
@@ -92,16 +95,16 @@ return require('packer').startup(function(use)
     --}
     use('github/Copilot.vim')
     use { 'catppuccin/nvim', as = 'catppuccin' }
-    use {
-        'xbase-lab/xbase',
-        run = 'make install',
-        requires = {
-            "neovim/nvim-lspconfig",
-        },
-        config = function()
-            require'xbase'.setup({})
-        end
-    }
+    -- use {
+    --     'xbase-lab/xbase',
+    --     run = 'make install',
+    --     requires = {
+    --         "neovim/nvim-lspconfig",
+    --     },
+    --     config = function()
+    --             require'xbase'.setup({})
+    --     end
+    -- }
     use('rluba/jai.vim')
 end)
 

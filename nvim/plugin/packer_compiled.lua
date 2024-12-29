@@ -49,8 +49,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/Users/dkErHoSe/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?.lua;/Users/dkErHoSe/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?/init.lua;/Users/dkErHoSe/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?.lua;/Users/dkErHoSe/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/Users/dkErHoSe/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/lua/5.1/?.so"
+local package_path_str = "C:\\Users\\ehsej\\AppData\\Local\\Temp\\nvim\\packer_hererocks\\2.1.1713484068\\share\\lua\\5.1\\?.lua;C:\\Users\\ehsej\\AppData\\Local\\Temp\\nvim\\packer_hererocks\\2.1.1713484068\\share\\lua\\5.1\\?\\init.lua;C:\\Users\\ehsej\\AppData\\Local\\Temp\\nvim\\packer_hererocks\\2.1.1713484068\\lib\\luarocks\\rocks-5.1\\?.lua;C:\\Users\\ehsej\\AppData\\Local\\Temp\\nvim\\packer_hererocks\\2.1.1713484068\\lib\\luarocks\\rocks-5.1\\?\\init.lua"
+local install_cpath_pattern = "C:\\Users\\ehsej\\AppData\\Local\\Temp\\nvim\\packer_hererocks\\2.1.1713484068\\lib\\lua\\5.1\\?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -74,179 +74,194 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["Copilot.vim"] = {
+    loaded = true,
+    path = "C:\\Users\\ehsej\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\Copilot.vim",
+    url = "https://github.com/github/Copilot.vim"
+  },
   LuaSnip = {
     loaded = true,
-    path = "/Users/dkErHoSe/.local/share/nvim/site/pack/packer/start/LuaSnip",
+    path = "C:\\Users\\ehsej\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
   catppuccin = {
     loaded = true,
-    path = "/Users/dkErHoSe/.local/share/nvim/site/pack/packer/start/catppuccin",
+    path = "C:\\Users\\ehsej\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\catppuccin",
     url = "https://github.com/catppuccin/nvim"
   },
   ["clangd-nvim"] = {
     loaded = true,
-    path = "/Users/dkErHoSe/.local/share/nvim/site/pack/packer/start/clangd-nvim",
+    path = "C:\\Users\\ehsej\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\clangd-nvim",
     url = "https://github.com/robert-oleynik/clangd-nvim"
   },
   ["cmp-buffer"] = {
     loaded = true,
-    path = "/Users/dkErHoSe/.local/share/nvim/site/pack/packer/start/cmp-buffer",
+    path = "C:\\Users\\ehsej\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\cmp-buffer",
     url = "https://github.com/hrsh7th/cmp-buffer"
   },
   ["cmp-nvim-lsp"] = {
     loaded = true,
-    path = "/Users/dkErHoSe/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
+    path = "C:\\Users\\ehsej\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\cmp-nvim-lsp",
     url = "https://github.com/hrsh7th/cmp-nvim-lsp"
   },
   ["cmp-nvim-lsp-signature-help"] = {
     loaded = true,
-    path = "/Users/dkErHoSe/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp-signature-help",
+    path = "C:\\Users\\ehsej\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\cmp-nvim-lsp-signature-help",
     url = "https://github.com/hrsh7th/cmp-nvim-lsp-signature-help"
   },
   ["cmp-nvim-lua"] = {
     loaded = true,
-    path = "/Users/dkErHoSe/.local/share/nvim/site/pack/packer/start/cmp-nvim-lua",
+    path = "C:\\Users\\ehsej\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\cmp-nvim-lua",
     url = "https://github.com/hrsh7th/cmp-nvim-lua"
   },
   ["cmp-path"] = {
     loaded = true,
-    path = "/Users/dkErHoSe/.local/share/nvim/site/pack/packer/start/cmp-path",
+    path = "C:\\Users\\ehsej\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\cmp-path",
     url = "https://github.com/hrsh7th/cmp-path"
   },
   cmp_luasnip = {
     loaded = true,
-    path = "/Users/dkErHoSe/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
+    path = "C:\\Users\\ehsej\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
+  },
+  ["everforest-nvim"] = {
+    loaded = true,
+    path = "C:\\Users\\ehsej\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\everforest-nvim",
+    url = "https://github.com/neanias/everforest-nvim"
   },
   ["friendly-snippets"] = {
     loaded = true,
-    path = "/Users/dkErHoSe/.local/share/nvim/site/pack/packer/start/friendly-snippets",
+    path = "C:\\Users\\ehsej\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\friendly-snippets",
     url = "https://github.com/rafamadriz/friendly-snippets"
   },
   gruvbox = {
     loaded = true,
-    path = "/Users/dkErHoSe/.local/share/nvim/site/pack/packer/start/gruvbox",
+    path = "C:\\Users\\ehsej\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\gruvbox",
     url = "https://github.com/gruvbox-community/gruvbox"
   },
   harpoon = {
     loaded = true,
-    path = "/Users/dkErHoSe/.local/share/nvim/site/pack/packer/start/harpoon",
+    path = "C:\\Users\\ehsej\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\harpoon",
     url = "https://github.com/theprimeagen/harpoon"
+  },
+  ["jai.vim"] = {
+    loaded = true,
+    path = "C:\\Users\\ehsej\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\jai.vim",
+    url = "https://github.com/rluba/jai.vim"
   },
   ["lsp-zero.nvim"] = {
     loaded = true,
-    path = "/Users/dkErHoSe/.local/share/nvim/site/pack/packer/start/lsp-zero.nvim",
+    path = "C:\\Users\\ehsej\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\lsp-zero.nvim",
     url = "https://github.com/VonHeikemen/lsp-zero.nvim"
   },
   ["lspkind.nvim"] = {
     loaded = true,
-    path = "/Users/dkErHoSe/.local/share/nvim/site/pack/packer/start/lspkind.nvim",
+    path = "C:\\Users\\ehsej\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\lspkind.nvim",
     url = "https://github.com/onsails/lspkind.nvim"
   },
   ["markdown-preview.nvim"] = {
     loaded = true,
-    path = "/Users/dkErHoSe/.local/share/nvim/site/pack/packer/start/markdown-preview.nvim",
+    path = "C:\\Users\\ehsej\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\markdown-preview.nvim",
     url = "https://github.com/iamcco/markdown-preview.nvim"
   },
   ["mason-lspconfig.nvim"] = {
     loaded = true,
-    path = "/Users/dkErHoSe/.local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim",
+    path = "C:\\Users\\ehsej\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\mason-lspconfig.nvim",
     url = "https://github.com/williamboman/mason-lspconfig.nvim"
   },
   ["mason.nvim"] = {
     loaded = true,
-    path = "/Users/dkErHoSe/.local/share/nvim/site/pack/packer/start/mason.nvim",
+    path = "C:\\Users\\ehsej\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
+  },
+  ["nord.nvim"] = {
+    loaded = true,
+    path = "C:\\Users\\ehsej\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nord.nvim",
+    url = "https://github.com/gbprod/nord.nvim"
   },
   ["nvim-cmp"] = {
     loaded = true,
-    path = "/Users/dkErHoSe/.local/share/nvim/site/pack/packer/start/nvim-cmp",
+    path = "C:\\Users\\ehsej\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
-    path = "/Users/dkErHoSe/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
+    path = "C:\\Users\\ehsej\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
   },
   ["nvim-lspfuzzy"] = {
     loaded = true,
-    path = "/Users/dkErHoSe/.local/share/nvim/site/pack/packer/start/nvim-lspfuzzy",
+    path = "C:\\Users\\ehsej\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-lspfuzzy",
     url = "https://github.com/ojroques/nvim-lspfuzzy"
   },
   ["nvim-treesitter"] = {
     loaded = true,
-    path = "/Users/dkErHoSe/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
+    path = "C:\\Users\\ehsej\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
   },
   ["odin.vim"] = {
     loaded = true,
-    path = "/Users/dkErHoSe/.local/share/nvim/site/pack/packer/start/odin.vim",
+    path = "C:\\Users\\ehsej\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\odin.vim",
     url = "https://github.com/Tetralux/odin.vim"
   },
   ["onedark.nvim"] = {
     loaded = true,
-    path = "/Users/dkErHoSe/.local/share/nvim/site/pack/packer/start/onedark.nvim",
-    url = "https://github.com/ful1e5/onedark.nvim"
+    path = "C:\\Users\\ehsej\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\onedark.nvim",
+    url = "https://github.com/navarasu/onedark.nvim"
   },
   ["packer.nvim"] = {
     loaded = true,
-    path = "/Users/dkErHoSe/.local/share/nvim/site/pack/packer/start/packer.nvim",
+    path = "C:\\Users\\ehsej\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
   },
   ["plenary.nvim"] = {
     loaded = true,
-    path = "/Users/dkErHoSe/.local/share/nvim/site/pack/packer/start/plenary.nvim",
+    path = "C:\\Users\\ehsej\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
   ["popup.nvim"] = {
     loaded = true,
-    path = "/Users/dkErHoSe/.local/share/nvim/site/pack/packer/start/popup.nvim",
+    path = "C:\\Users\\ehsej\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\popup.nvim",
     url = "https://github.com/nvim-lua/popup.nvim"
   },
   ["rust.vim"] = {
     loaded = true,
-    path = "/Users/dkErHoSe/.local/share/nvim/site/pack/packer/start/rust.vim",
+    path = "C:\\Users\\ehsej\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\rust.vim",
     url = "https://github.com/rust-lang/rust.vim"
   },
   ["telescope.nvim"] = {
     loaded = true,
-    path = "/Users/dkErHoSe/.local/share/nvim/site/pack/packer/start/telescope.nvim",
+    path = "C:\\Users\\ehsej\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
   ["vim-fugitive"] = {
     loaded = true,
-    path = "/Users/dkErHoSe/.local/share/nvim/site/pack/packer/start/vim-fugitive",
+    path = "C:\\Users\\ehsej\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
   },
   ["vim-smoothie"] = {
     loaded = true,
-    path = "/Users/dkErHoSe/.local/share/nvim/site/pack/packer/start/vim-smoothie",
+    path = "C:\\Users\\ehsej\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-smoothie",
     url = "https://github.com/psliwka/vim-smoothie"
   },
   vimwiki = {
     loaded = true,
-    path = "/Users/dkErHoSe/.local/share/nvim/site/pack/packer/start/vimwiki",
+    path = "C:\\Users\\ehsej\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vimwiki",
     url = "https://github.com/vimwiki/vimwiki"
   },
-  xbase = {
-    config = { "\27LJ\2\n7\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\nxbase\frequire\0" },
+  ["vscode.nvim"] = {
     loaded = true,
-    path = "/Users/dkErHoSe/.local/share/nvim/site/pack/packer/start/xbase",
-    url = "https://github.com/xbase-lap/xbase"
+    path = "C:\\Users\\ehsej\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vscode.nvim",
+    url = "https://github.com/Mofiqul/vscode.nvim"
   },
   ["zen-mode.nvim"] = {
     loaded = true,
-    path = "/Users/dkErHoSe/.local/share/nvim/site/pack/packer/start/zen-mode.nvim",
+    path = "C:\\Users\\ehsej\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\zen-mode.nvim",
     url = "https://github.com/folke/zen-mode.nvim"
   }
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: xbase
-time([[Config for xbase]], true)
-try_loadstring("\27LJ\2\n7\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\nxbase\frequire\0", "config", "xbase")
-time([[Config for xbase]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then

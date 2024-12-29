@@ -1,0 +1,25 @@
+{
+    "Advent of Code solver body": {
+        "prefix": "fff",
+        "body": [
+            "const std = @import(\"std\");",
+            "const utils = @import(\"utils.zig\");",
+            "",
+            "fn run(is_test: bool) !void {",
+            "    var gpa = std.heap.GeneralPurposeAllocator(.{ .safety = true });",
+            "    defer _ = gpa.deinit();",
+            "    const allocator = gpa.allocator();",
+            "    const contents = try utils.readEntireFile(if (is_test) \"inputs/day$1_test.txt\" else \"inputs/day$1.txt\");",
+            "",
+            "    var part1: i64 = 0;"
+            "    part1 = 0;
+            "    var part2: i64 = 0;"
+            "    part2 = 0;
+            "",
+            "    std.log.info(\"Part 1: {d}\", .{ part1 });",
+            "    std.log.info(\"Part 2: {d}\", .{ part2 });",
+            "}"
+        ],
+        "description": "Default body for reading the inputs for a given day."
+    }
+}
