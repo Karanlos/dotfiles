@@ -32,10 +32,8 @@ require('snippets')
 vim.lsp.enable('jails')
 vim.lsp.enable('zls')
 
-
-autocmd('LspAttach', {
-    group = ThePrimeagenGroup,
-    callback = function(e)
+local on_attach = function(e)
+    print("Hello")
         local opts = { buffer = e.buf }
         vim.keymap.set('n', 'gd', function() vim.lsp.buf.definition() end, opts)
         vim.keymap.set('n', 'gD', function() vim.lsp.buf.declaration() end, opts)
@@ -64,4 +62,23 @@ autocmd('LspAttach', {
         --     end, { noremap = true, desc = 'go to extended definiion', buffer = true })
         -- end
     end
+
+autocmd('LspAttach', {
+    group = ThePrimeagenGroup,
+    callback = on_attach,
 })
+-- vim.lsp.enable('jails')
+-- vim.lsp.config('jails', {
+--     -- cmd = { '/home/erik-sejersen/Source/jai/Jails/bin/jails' },
+--     cmd = { 'jails' },
+--     on_attach = on_attach,
+--     filetypes = { 'jai', 'zig' },
+--     root_dir = require('lspconfig.util').root_pattern('build.jai', '.git', '*.jai'),
+-- })
+local util = require 'lspconfig.util'
+vim.lsp.config['jails'] = {
+    cmd = { 'jails' },
+    filetypes = { 'jai' },
+    root_markers = { '.git', 'build.jai', 'jails.json' },
+}
+vim.lsp.enable('jails')

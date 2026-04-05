@@ -4,9 +4,11 @@ vim.pack.add({
 
 local neoscroll = require('neoscroll')
 neoscroll.setup({
-    mappings = {                 -- Keys to be mapped to their corresponding default scrolling animation
+    mappings = {
+        "<C-u>", "<C-d>", "<C-b>", "<C-f>",
+        "<C-y>", "<C-e>", "zt", "zz", "zb",
     },
-    duration_multiplier = 0.001,
+    duration_multiplier = 0.5,
     performance_mode = true,
     easing = 'linear',
 })
