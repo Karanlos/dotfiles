@@ -1,6 +1,7 @@
 local ctrl = 'C'
 
 vim.keymap.set('i', '<C-y>', '<Esc>')
+vim.keymap.set('n', '<leader>co', '<cmd>CopilotChatToggle<CR>', { desc = 'Toggle Copilot Chat' })
 
 vim.keymap.set('x', '<leader>P', '"_dP')
 vim.keymap.set('x', '<leader>p', '"_dp')

@@ -8,7 +8,7 @@ return {
             },
             -- rest of your settings
         }
-        require'lspconfig'.csharp_ls.setup(config)
+        vim.lsp.config('csharp_ls', config)
         require("csharpls_extended").buf_read_cmd_bind()
         require('telescope').load_extension('csharpls_definition')
     end

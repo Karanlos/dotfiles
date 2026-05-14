@@ -1,6 +1,4 @@
-local cmd = vim.cmd
 local fn = vim.fn
-local g = vim.g
 
 
 local autocmd = vim.api.nvim_create_autocmd
@@ -51,7 +49,6 @@ vim.keymap.set('n', '<leader>m3', function() makeProject(3) end, opts)
 vim.keymap.set('n', '<leader>m4', function() makeProject(4) end, opts)
 
 local on_attach = function(e)
-    print("Hello")
         local opts = { buffer = e.buf }
         vim.keymap.set('n', 'gd', function() vim.lsp.buf.definition() end, opts)
         vim.keymap.set('n', 'gD', function() vim.lsp.buf.declaration() end, opts)
@@ -68,7 +65,7 @@ local on_attach = function(e)
         vim.keymap.set('n', ']d', function() vim.diagnostic.goto_next() end, opts)
         vim.keymap.set('n', '<leader>q', function() vim.diagnostic.setloclist() end, opts)
         vim.keymap.set('n', '<leader>wa', function() vim.lsp.buf.format { async = true } end, opts)
-        vim.keymap.set("n", "<leader>gn", vim.lsp.buf.rename, opts)
+        vim.keymap.set('n', '<leader>gn', vim.lsp.buf.rename, opts)
         vim.keymap.set('n', '<leader>c', vim.lsp.buf.code_action, opts)
         vim.keymap.set({'i', 'n'}, '<C-K>', vim.lsp.buf.signature_help, opts)
 
@@ -95,8 +92,30 @@ autocmd('LspAttach', {
 -- })
 -- local util = require 'lspconfig.util'
 vim.lsp.config['jails'] = {
-    cmd = { 'jails' },
-    filetypes = { 'jai' },
-    root_markers = { '.git', 'build.jai', 'jails.json' },
-}
+
+vim.filetype.add({
+    extension = {
+        jai = 'jai',
+    },
+})
+
+-- local utils = require 'lspconfig.util'
+--
+-- vim.lsp.config.jails = {
+--     cmd = { 'jails' },
+--     filetypes = { 'jai' },
+--     name = "Jails",
+--     root_markers = { 'jails.json' },
+-- }
 vim.lsp.enable('jails')
+
+vim.lsp.config.zls = {
+    cmd = { '/Users/dkErHoSe/Documents/GitHub/zls/zig-out/bin/zls' },
+    filetypes = { 'zig' }
+}
+vim.lsp.enable('zls')
+
+vim.diagnostic.config({
+    virtual_text = true,
+})
+
