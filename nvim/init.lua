@@ -10,7 +10,6 @@ local ThePrimeagenGroup = augroup('ThePrimeagen', {})
 vim.g.mapleader = ' '
 vim.g.maplocalleader = '\\'
 
-
 -- Setup lazy.nvim
 -- require("lazy").setup({
 --   spec = {
@@ -28,9 +27,28 @@ require('karanlos.remap')
 
 require('snippets')
 
-
-vim.lsp.enable('jails')
 vim.lsp.enable('zls')
+
+vim.opt.runtimepath:append(vim.uv.cwd() .. '/nvim')
+
+vim.opt.fileformats = { 'unix' }
+
+if vim.g.neovide then
+    vim.g.neovide_scale_factor = 0.8
+end
+
+local makeProject = function(make_index)
+    vim.cmd('luafile ' .. vim.uv.cwd() .. '/nvim/make.lua')
+
+    if vim.g.make_table and vim.g.make_table[make_index] ~= vim.NIL and vim.g.make_table[make_index] then
+        vim.g.make_table[make_index]()
+    end
+end
+
+vim.keymap.set('n', '<leader>m1', function() makeProject(1) end, opts)
+vim.keymap.set('n', '<leader>m2', function() makeProject(2) end, opts)
+vim.keymap.set('n', '<leader>m3', function() makeProject(3) end, opts)
+vim.keymap.set('n', '<leader>m4', function() makeProject(4) end, opts)
 
 local on_attach = function(e)
     print("Hello")
@@ -75,7 +93,7 @@ autocmd('LspAttach', {
 --     filetypes = { 'jai', 'zig' },
 --     root_dir = require('lspconfig.util').root_pattern('build.jai', '.git', '*.jai'),
 -- })
-local util = require 'lspconfig.util'
+-- local util = require 'lspconfig.util'
 vim.lsp.config['jails'] = {
     cmd = { 'jails' },
     filetypes = { 'jai' },

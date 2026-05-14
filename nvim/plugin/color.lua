@@ -1,5 +1,5 @@
 function ColorMyPencils(color)
-	color = color or vim.g.my_color_scheme or 'onedark'
+	color = color or vim.g.my_color_scheme or 'gruvbox'
 	vim.cmd.colorscheme(color)
 
 	vim.g.my_color_scheme = color;

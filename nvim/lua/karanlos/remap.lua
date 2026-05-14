@@ -10,6 +10,8 @@ vim.keymap.set('i', '<C-H>', 'copilot#Accept("\\<CR>")', {
   replace_keycodes = false
 })
 
+
+vim.keymap.set('t', '<ESC>', '<C-\\><C-n>', {})
 vim.keymap.set('n', '<leader><leader>h', function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end)
 vim.keymap.set('n', '<leader>to', '<cmd>tabnew<CR>', { desc = 'Open new tab' })
 vim.keymap.set('n', '<leader>tn', '<cmd>tabnext<CR>', { desc = 'Go to previous tab' })
