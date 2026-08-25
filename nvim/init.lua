@@ -32,7 +32,7 @@ vim.opt.runtimepath:append(vim.uv.cwd() .. '/nvim')
 vim.opt.fileformats = { 'unix' }
 
 if vim.g.neovide then
-    vim.g.neovide_scale_factor = 0.8
+    vim.g.neovide_scale_factor = 1.05
 end
 
 local makeProject = function(make_index)
@@ -71,11 +71,11 @@ local on_attach = function(e)
 
         local client = vim.lsp.get_client_by_id(e.data.client_id)
 
-        -- if client.name == 'csharp_ls' then
-        --     vim.keymap.set('n', 'gd', function()
-        --         require('csharpls_extended').lsp_definitions()
-        --     end, { noremap = true, desc = 'go to extended definiion', buffer = true })
-        -- end
+        if client.name == 'csharp_ls' then
+            client.server_capabilities.definitionProvider = true
+            -- csharp-ls has no implementation provider; definition is the closest equivalent
+            -- vim.keymap.set('n', 'gi', function() vim.lsp.buf.definition() end, opts)
+        end
     end
 
 autocmd('LspAttach', {
@@ -91,11 +91,15 @@ autocmd('LspAttach', {
 --     root_dir = require('lspconfig.util').root_pattern('build.jai', '.git', '*.jai'),
 -- })
 -- local util = require 'lspconfig.util'
-vim.lsp.config['jails'] = {
 
 vim.filetype.add({
     extension = {
         jai = 'jai',
+    },
+})
+vim.filetype.add({
+    extension = {
+        cs = 'cs',
     },
 })
 
@@ -107,7 +111,19 @@ vim.filetype.add({
 --     name = "Jails",
 --     root_markers = { 'jails.json' },
 -- }
+vim.lsp.log.set_level 'trace'
 vim.lsp.enable('jails')
+vim.lsp.enable('csharp_ls')
+
+
+
+-- vim.lsp.config.omnisharp = {
+--     cmd = { 'omnisharp', '--languageserver', '--hostPID', tostring(vim.fn.getpid()) },
+--     filetypes = { 'cs' },
+--     root_markers = { '*.sln', '*.csproj', '.git' },
+-- }
+-- vim.lsp.enable('omnisharp')
+
 
 vim.lsp.config.zls = {
     cmd = { '/Users/dkErHoSe/Documents/GitHub/zls/zig-out/bin/zls' },

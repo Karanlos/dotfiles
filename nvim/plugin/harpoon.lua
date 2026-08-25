@@ -1,37 +1,50 @@
--- vim.pack.add({
---     'https://github.com/nvim-lua/plenary.nvim',
---     { src = 'https://github.com/vieitesss/miniharp.nvim' }
--- -- 	{
--- --         src = 'https://github.com/theprimeagen/harpoon',
--- -- 	    version = 'harpoon2',
--- -- 	},
--- })
---
--- local harp = require('miniharp')
---
--- harp.setup({
---     autoload = true,
---     autosave = true,
---     show_on_autoload = true,
--- })
---
--- vim.keymap.set('n', '<leader>ha', harp.add_file)
--- vim.keymap.set('n', '<leader>hm', harp.show_list)
--- vim.keymap.set('n', '<leader>h1', function() harp.show_list():select(1) end)
-
-
 vim.pack.add({
+    'https://github.com/nvim-lua/plenary.nvim',
     {
-        src = 'https://github.com/leath-dub/snipe.nvim',
+        src = 'https://github.com/vieitesss/miniharp.nvim',
+        version = vim.version.range("v*"),
     }
+-- 	{
+--         src = 'https://github.com/theprimeagen/harpoon',
+-- 	    version = 'harpoon2',
+-- 	},
 })
 
-local snipe = require('snipe')
+local miniharp = require('miniharp')
 
-snipe.setup()
+miniharp.setup({
+  autoload = true, -- load marks for this cwd on startup (default: true)
+  autosave = true, -- save marks for this cwd on exit (default: true)
+  show_on_autoload = false, -- show popup list after a successful autoload (default: false)
+  notifications = true, -- enable notification and status messages (default: true)
+  ui = {
+    position = 'center', -- 'center' | 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right'
+    show_hints = true, -- show close hints in the floating list (default: true)
+    enter = true, -- enter the floating window when it opens (default: true)
+  },
+})
+
+vim.keymap.set('n', '<leader>ha', miniharp.add_file)
+vim.keymap.set('n', '<leader>hm', miniharp.show_list)
+vim.keymap.set('n', '<leader>h1', function() miniharp.go_to(1) end, { desc = 'miniharp: go to mark 1' })
+vim.keymap.set('n', '<leader>h2', function() miniharp.go_to(2) end, { desc = 'miniharp: go to mark 2' })
+vim.keymap.set('n', '<leader>h3', function() miniharp.go_to(3) end, { desc = 'miniharp: go to mark 3' })
+vim.keymap.set('n', '<leader>h4', function() miniharp.go_to(4) end, { desc = 'miniharp: go to mark 4' })
+vim.keymap.set('n', '<leader>h5', function() miniharp.go_to(5) end, { desc = 'miniharp: go to mark 5' })
 
 
-vim.keymap.set('n', '<leader>hm', snipe.open_buffer_menu)
+-- vim.pack.add({
+--     {
+--         src = 'https://github.com/leath-dub/snipe.nvim',
+--     }
+-- })
+--
+-- local snipe = require('snipe')
+--
+-- snipe.setup()
+--
+--
+-- vim.keymap.set('n', '<leader>hm', snipe.open_buffer_menu)
 
 
 -- vim.keymap.set('n', '<leader>hm', function() harp.ui:toggle_quick_menu(harp:list()) end)

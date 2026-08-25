@@ -19,6 +19,9 @@ vim.keymap.set('n', '<leader>tn', '<cmd>tabnext<CR>', { desc = 'Go to previous t
 vim.keymap.set('n', '<leader>tp', '<cmd>tabprevious<CR>', { desc = 'Go to previous tab' })
 vim.keymap.set('n', '<leader>tc', '<cmd>tabclose<CR>', { desc = 'Close new tab' })
 
+vim.keymap.set('n', '<leader>cn', '<cmd>cnext<CR>', { desc = 'Next Quickfix' })
+vim.keymap.set('n', '<leader>cp', '<cmd>cprev<CR>', { desc = 'Previous Quickfix' })
+
 -- local ls = require('luasnip')
 -- if vim.fn.has('macunix') then
 --     vim.keymap.set('n', '<leader><leader>s', '<cmd>source ~/.config/nvim/after/plugin/luasnip.lua<CR>')
